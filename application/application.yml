@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: node-prometheus
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/cyrip/node-prometheus.git'
+    targetRevision: HEAD
+    path: dev
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: node-prometheus
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
