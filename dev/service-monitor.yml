@@ -11,6 +11,6 @@ spec:
     matchLabels:
       app: node-prometheus
   endpoints:
-  - port: 8080
+  - port: http
     interval: 15s
     path: /metrics
