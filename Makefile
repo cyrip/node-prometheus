@@ -13,3 +13,6 @@ all: build
 build:
 	docker buildx build -t ${IMAGE}:${TAG} .
 	docker push ${IMAGE}:${TAG}
+
+run:
+    docker run --rm --init -p 8080:8080 nodejs
