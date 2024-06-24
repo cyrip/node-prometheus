@@ -2,15 +2,15 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: node-prometheus
-  namespace: node-prometheus  
+  namespace: node-prometheus
   labels:
-    release: prometheus
     prometheus: node-prometheus
+    release: prometheus
 spec:
   selector:
     matchLabels:
       app: node-prometheus
   endpoints:
-  - port: http
+  - port: http8080
     interval: 15s
     path: /metrics
