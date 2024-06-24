@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: node-prometheus-ingress
+  namespace: node-prometheus-
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: node-prometheus.codeware.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: node-prometheus-service
+            port:
+              number: 8080
+  - host: node-prometheus.codeware.icu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: node-prometheus-service
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - node-prometheus.codeware.icu
+    secretName: node-prometheus-public-tls

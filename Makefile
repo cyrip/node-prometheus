@@ -2,7 +2,7 @@
 
 # Variables
 IMAGE  = cyrip/node-prometheus
-TAG = latest
+TAG = 1.0.0
 
 # targets
 .PHONY: all

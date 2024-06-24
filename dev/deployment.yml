@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-prometheus
+  namespace: node-prometheus
+  labels:
+    app: node-prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-prometheus
+  template:
+    metadata:
+      labels:
+        app: node-prometheus
+    spec:
+      containers:
+      - name: node-prometheus
+        image: cyrip/node-prometheus:1.0.0
+        ports:
+        - containerPort: 8080
