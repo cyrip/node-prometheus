@@ -5,6 +5,7 @@ metadata:
   namespace: node-prometheus  
   labels:
     release: prometheus
+    prometheus: node-prometheus
 spec:
   selector:
     matchLabels:
